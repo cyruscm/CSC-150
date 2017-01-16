@@ -1,0 +1,75 @@
+package birthdayproject;
+
+import java.util.Arrays;
+
+
+public class TestMain
+{
+	public static void main(String[] args) {
+		startExperiment();	
+	}
+
+	public static void startExperiment() {
+		int matches;
+		BirthdayList birthdayList;
+
+		for (int i = 5 ; i <= 100 ; i = i + 5) {
+			matches = 0;
+			birthdayList = new BirthdayList(i);
+			for (int x = 0; x < 10 ; x++) {
+				if (birthdayList.matchInList())
+					matches++;
+				birthdayList.regenerateBirthdays();
+			}
+			System.out.println("The birthday experiment worked " + matches
+					 + "/10 times for " + i + " people.");
+		}
+	}
+}
+
+
+class BirthdayList {
+  	private int[] populatedList;
+	private int size;
+	
+	BirthdayList() {
+		size = 5;
+		initialize();
+	}
+
+	BirthdayList(int people_size) {
+		size = people_size;
+ 		initialize(); 
+	}
+
+	public boolean matchInList() {
+		boolean matchFound = false;
+		
+		for (int i=0; i<populatedList.length-1; i++) {
+			if (populatedList[i] == populatedList[i+1]) {
+				matchFound = true;
+				break;
+			}
+		}
+		return matchFound;
+  	}
+
+	public void regenerateBirthdays() {
+		populatedList = new int[size];
+		populateBirthdays();
+	}
+
+	private void initialize() {
+		populatedList = new int[size];
+		populateBirthdays();
+	}
+
+ 
+	private void populateBirthdays() {
+		for (int i=0; i<size; i++) {
+			populatedList[i] = (int)(Math.random()*365) + 1;
+		}
+		Arrays.sort(populatedList);	
+	}
+
+} 

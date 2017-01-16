@@ -1,0 +1,8 @@
+1: "DrawingBox myBoard" is declaring a variable myBoard of the type DrawingBoard with a null value.
+   "myBoard = new DrawingBox()" is constructing a the DrawingBox object and pointing the myBoard variable to it.
+   "myBoard.setVisible(true)" is calling a method of the myBoard DrawingBox object and telling it to render in the clients display or Xserver.
+   "myBoard.drawRect(320,230,120,180)" is creating a rectangle inside of the myBoard DrawingBox object with a coordinate position of (320,230) with a width of 120 and height of 180. 
+
+2: The DrawingBox is constructed on relative line 2 ("myBoard = new DrawingBox()"). You know this is a legal constructor call because the documentation states it allows no arguments. Additionally, you can know through Eclipse's content assist. However, it could have an accepted an argument of type String, which would have set the window rendering the DrawingBox to have a title matching the inputted STring.
+
+3: drawRect() represents a method that renders a rectangle in the DrawingBox given specific values. We are using the version that takes 4 integers where the first 2 are the coordinate positions in the DrawingBox (x and y) and the other 2 are the width and height. However, it would have also accepted a standard Java awt object of Rectangle which contains the same 4 

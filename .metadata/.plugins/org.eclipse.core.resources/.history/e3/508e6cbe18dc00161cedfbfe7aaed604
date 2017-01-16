@@ -1,0 +1,64 @@
+package birthdayproject;
+
+import java.util.Arrays;
+
+public class BirthdayList {
+	final int DEFAULT_SIZE = 5;
+	
+  	private int[] populatedList;
+	private int size;
+	
+	BirthdayList() {
+		size = DEFAULT_SIZE;
+		initialize();
+	}
+
+	BirthdayList(int people_size) {
+		size = people_size;
+ 		initialize(); 
+	}
+	
+	private void initialize() {
+		populatedList = new int[size];
+		populateBirthdays();
+	}
+
+ 
+	private void populateBirthdays() {
+		for (int i=0; i<size; i++) {
+			populatedList[i] = (int)(Math.random()*365) + 1;
+		}
+		Arrays.sort(populatedList);	
+	}
+	
+	public void setSize(int newSize) {
+		size = newSize;
+		regenerateBirthdays();
+	}
+	
+	public void setSize(int newSize, boolean regenerate) {
+		size = newSize;
+		if (regenerate) {
+			regenerateBirthdays();
+		}
+	}
+
+	public boolean matchInList() {
+		boolean matchFound = false;
+		
+		for (int i=0; i<populatedList.length-1; i++) {
+			if (populatedList[i] == populatedList[i+1]) {
+				matchFound = true;
+				break;
+			}
+		}
+		return matchFound;
+  	}
+
+	public void regenerateBirthdays() {
+		populatedList = new int[size];
+		populateBirthdays();
+	}
+
+
+}
